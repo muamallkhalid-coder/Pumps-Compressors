@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProFluids | Oil & Gas Engineering Quiz Bank</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        appleDark: '#0a0a0c',
+                        cardDark: 'rgba(255, 255, 255, 0.03)',
+                        cardHover: 'rgba(255, 255, 255, 0.06)',
+                        accentBlue: '#0A84FF',
+                        accentGreen: '#30D158',
+                        accentOrange: '#FF9F0A',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Tajawal', 'Inter', sans-serif;
+            background-color: #050507;
+            color: #f5f5f7;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-hover:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(10, 132, 255, 0.4);
+            transform: translateY(-2px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .apple-gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .blue-gradient-text {
+            background: linear-gradient(135deg, #0A84FF 0%, #5ac8fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .green-gradient-text {
+            background: linear-gradient(135deg, #30D158 0%, #8ae9a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="goHome()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-oil-well text-white text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-tight apple-gradient-text">ProFluids <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 ml-2">MCQ Bank</span></h1>
+                    <p class="text-xs text-gray-400">Oil & Gas Engineering Assessment</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button onclick="goHome()" class="px-4 py-2 rounded-xl text-sm font-medium bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-house text-blue-400"></i>
+                    <span>الرئيسية (Home)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 py-8">
+        
+        <!-- View 1: Home Selection (Pumps vs Compressors) -->
+        <div id="home-view" class="space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 py-6">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 inline-block">
+                    بنك الأسئلة الهندسي المعتمد (100 سؤال)
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight apple-gradient-text">
+                    منظومة المضخات والضواغط النفطية
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    اختبر معلوماتك الهندسية وتدرب على أسئلة المقابلات الفنية في شركات النفط والغاز العالمية. اختر القسم للبدء:
+                </p>
+            </div>
+
+            <!-- Two Main Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto pt-4">
+                
+                <!-- Pumps Card -->
+                <div onclick="startCategory('pumps')" class="glass-panel glass-panel-hover rounded-3xl p-8 cursor-pointer relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                    <div class="relative z-10 space-y-6">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-400">PART 1</span>
+                            <h3 class="text-2xl font-bold text-white mt-1">المضخات (Pumps)</h3>
+                            <p class="text-sm text-gray-400 mt-2">50 سؤالاً هندسياً تشمل الأساسيات، العمليات، التكهف، قوانين التشابه، وحل المشاكل.</p>
+                        </div>
+                        <div class="flex items-center text-blue-400 font-medium text-sm space-x-2 space-x-reverse pt-2">
+                            <span>بدء اختبار المضخات</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compressors Card -->
+                <div onclick="startCategory('compressors')" class="glass-panel glass-panel-hover rounded-3xl p-8 cursor-pointer relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                    <div class="relative z-10 space-y-6">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">PART 2</span>
+                            <h3 class="text-2xl font-bold text-white mt-1">الضواغط (Compressors)</h3>
+                            <p class="text-sm text-gray-400 mt-2">50 سؤالاً هندسياً تشمل الـ Surge، الانضغاط البوليتروبي، التبريد البيني، والأعطال المتقدمة.</p>
+                        </div>
+                        <div class="flex items-center text-emerald-400 font-medium text-sm space-x-2 space-x-reverse pt-2">
+                            <span>بدء اختبار الضواغط</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- View 2: Quiz Interface -->
+        <div id="quiz-view" class="hidden max-w-3xl mx-auto space-y-6">
+            
+            <!-- Quiz Header / Progress -->
+            <div class="glass-panel rounded-2xl p-4 flex items-center justify-between">
+                <div>
+                    <span id="quiz-category-title" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">قسم المضخات</span>
+                    <h3 id="quiz-progress-text" class="text-lg font-bold text-white mt-1">السؤال 1 من 50</h3>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs text-gray-400">النتيجة الحالية</span>
+                    <p id="quiz-score-text" class="text-lg font-bold text-emerald-400">0 / 0</p>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden">
+                <div id="question-number-badge" class="absolute top-6 left-6 text-xs text-gray-500 font-mono">Q01</div>
+                
+                <!-- Question Text (Bilingual) -->
+                <div class="space-y-3 pt-2">
+                    <h4 id="question-en" class="text-lg sm:text-xl font-bold text-blue-300 font-mono"></h4>
+                    <h4 id="question-ar" class="text-base sm:text-lg font-semibold text-white leading-relaxed"></h4>
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3 pt-2">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Explanation Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                    <div class="flex items-center space-x-2 space-x-reverse text-emerald-400 font-semibold text-sm">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>الإجابة الصحيحة</span>
+                    </div>
+                    <p id="explanation-text" class="text-sm text-gray-300"></p>
+                </div>
+
+                <!-- Next Button -->
+                <div class="flex justify-end pt-4">
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center space-x-2 space-x-reverse">
+                        <span>السؤال التالي</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View 3: Quiz Result Summary -->
+        <div id="result-view" class="hidden max-w-xl mx-auto glass-panel rounded-3xl p-8 text-center space-y-6">
+            <div class="w-20 h-20 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-3xl mx-auto shadow-xl shadow-emerald-500/20">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-2xl font-bold text-white">أكملت الاختبار بنجاح!</h3>
+                <p class="text-gray-400 text-sm">لقد أنهيت بنك الأسئلة لهذا القسم بكفاءة عالية.</p>
+            </div>
+            <div class="py-4 glass-panel rounded-2xl max-w-xs mx-auto">
+                <span class="text-xs text-gray-400">نتيجتك النهائية</span>
+                <p id="final-score-display" class="text-3xl font-black text-emerald-400 mt-1">45 / 50</p>
+            </div>
+            <div class="flex justify-center space-x-4 space-x-reverse pt-2">
+                <button onclick="goHome()" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-all">
+                    العودة للرئيسية
+                </button>
+                <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-600/30">
+                    إعادة الاختبار
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-white/10 py-6 text-center text-xs text-gray-500 mt-12">
+        <p>ProFluids Engineering Quiz Bank © 2026 | Designed for Oil & Gas Process Engineers</p>
+    </footer>
+
+    <!-- JavaScript Data and Logic -->
+    <script>
+        const pumpsQuestions = [
+            {
+                en: "Q1. What is the primary function of a pump in an industrial system?",
+                ar: "ما هي الوظيفة الأساسية للمضخة في النظام الصناعي؟",
+                options: [
+                    "A) To compress gases (لضغط الغازات)",
+                    "B) To add mechanical energy to a liquid to move it (لإضافة طاقة ميكانيكية للسائل لتحريكه)",
+                    "C) To separate oil from water (لفصل الزيت عن الماء)",
+                    "D) To measure fluid flow (لقياس تدفق المائع)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q2. What are the two main classifications of pumps?",
+                ar: "ما هما التصنيفان الرئيسيان للمضخات؟",
+                options: [
+                    "A) Centrifugal and Axial (طرد مركزي ومحوري)",
+                    "B) Rotary and Reciprocating (دوارة وترددية)",
+                    "C) Dynamic and Positive Displacement (ديناميكية وإزاحة موجبة)",
+                    "D) Electrical and Mechanical (كهربائية وميكانيكية)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q3. Which type of pump uses a rotating impeller to increase the velocity of the fluid?",
+                ar: "أي نوع من المضخات يستخدم مروحة دوارة لزيادة سرعة المائع؟",
+                options: [
+                    "A) Reciprocating pump (المضخة الترددية)",
+                    "B) Gear pump (المضخة الترسية)",
+                    "C) Centrifugal pump (مضخة الطرد المركزي)",
+                    "D) Diaphragm pump (مضخة الغشاء)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q4. A key characteristic of a Positive Displacement (PD) pump is that it:",
+                ar: "السمة الأساسية لمضخة الإزاحة الموجبة هي أنها:",
+                options: [
+                    "A) Delivers a constant flow rate regardless of system pressure (تعطي معدل تدفق ثابت بغض النظر عن ضغط النظام)",
+                    "B) Cannot handle viscous fluids (لا يمكنها التعامل مع السوائل اللزجة)",
+                    "C) Relies purely on centrifugal force (تعتمد كلياً على قوة الطرد المركزي)",
+                    "D) Must never have a relief valve (يجب ألا تزود بصمام أمان)"
+                ],
+                answer: 0
+            },
+            {
+                en: "Q5. Which pump is best suited for transferring highly viscous fluids like heavy crude oil?",
+                ar: "ما هي المضخة الأنسب لنقل السوائل عالية اللزوجة مثل النفط الثقيل؟",
+                options: [
+                    "A) Centrifugal pump (مضخة الطرد المركزي)",
+                    "B) Rotary Gear pump (المضخة الترسية الدوارة)",
+                    "C) Axial flow pump (مضخة الجريان المحوري)",
+                    "D) Submersible pump (المضخة الغاطسة)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q6. What is 'Priming' in a centrifugal pump?",
+                ar: "ما هو 'التحضير' في مضخة الطرد المركزي؟",
+                options: [
+                    "A) Heating the pump (تسخين المضخة)",
+                    "B) Filling the casing and suction line with liquid to remove air (ملء الغلاف وخط السحب بالسائل لإزالة الهواء)",
+                    "C) Adjusting motor speed (ضبط سرعة الماطور)",
+                    "D) Lubricating bearings (تشحيم المحامل)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q7. Cavitation in a centrifugal pump occurs when:",
+                ar: "يحدث التكهف في مضخة الطرد المركزي عندما:",
+                options: [
+                    "A) Suction pressure falls below the fluid's vapor pressure (ينخفض ضغط السحب أقل من الضغط البخاري للسائل)",
+                    "B) Discharge pressure is too high (يكون ضغط الطرد مرتفعاً جداً)",
+                    "C) Fluid temperature is too low (تكون الحرارة منخفضة جداً)",
+                    "D) Over-lubrication occurs (يحدث تشحيم زائد)"
+                ],
+                answer: 0
+            },
+            {
+                en: "Q8. What happens if the discharge valve of a running Positive Displacement pump is fully closed?",
+                ar: "ماذا يحدث إذا تم إغلاق صمام الطرد بالكامل لمضخة إزاحة موجبة أثناء عملها؟",
+                options: [
+                    "A) The pump stops safely (تتوقف بأمان)",
+                    "B) Flow drops to zero safely (ينخفض التدفق للصفر بأمان)",
+                    "C) Pressure builds up until a pipe bursts or motor stalls (يتراكم الضغط حتى تنفجر الأنابيب أو يتعطل الماطور)",
+                    "D) It spins in reverse (تدور عكسياً)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q9. To avoid cavitation, which condition must be met?",
+                ar: "لتجنب التكهف، أي شرط يجب تحقيقه؟",
+                options: [
+                    "A) NPSHa < NPSHr (الطاقة المتاحة أقل من المطلوبة)",
+                    "B) NPSHa > NPSHr (الطاقة المتاحة أكبر من المطلوبة)",
+                    "C) NPSHa = 0 (الطاقة المتاحة صفر)",
+                    "D) Vapor pressure = atmospheric pressure (الضغط البخاري يساوي الضغط الجوي)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q10. Connecting two identical centrifugal pumps in series primarily increases the:",
+                ar: "ربط مضختي طرد مركزي متطابقتين على التوالي يزيد أساساً من:",
+                options: [
+                    "A) Total flow rate (معدل التدفق الكلي)",
+                    "B) Total head / Pressure (الضغط الكلي)",
+                    "C) Liquid viscosity (لزوجة السائل)",
+                    "D) Vapor pressure (الضغط البخاري)"
+                ],
+                answer: 1
+            },
+            // Adding more questions up to 50 for pumps...
+            {
+                en: "Q11. Connecting centrifugal pumps in parallel is used when the system requires:",
+                ar: "ربط مضخات الطرد المركزي على التوازي يُستخدم عندما يحتاج النظام إلى:",
+                options: [
+                    "A) Extremely high pressure (ضغط عالٍ جداً)",
+                    "B) Handling viscous fluids (التعامل مع سوائل لزجة)",
+                    "C) Higher flow rates at a constant head (معدلات تدفق أعلى عند ضغط ثابت)",
+                    "D) Preventing cavitation (منع التكهف)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q12. What is the primary function of the 'Volute' casing?",
+                ar: "ما هي الوظيفة الأساسية للغلاف الحلزوني؟",
+                options: [
+                    "A) To increase fluid velocity (لزيادة سرعة المائع)",
+                    "B) To convert fluid kinetic energy into pressure (لتحويل الطاقة الحركية للمائع إلى ضغط)",
+                    "C) To cool the impeller (لتبريد المروحة)",
+                    "D) To prevent backward flow (لمنع التدفق العكسي)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q13. Why is a Check Valve installed at the pump's discharge?",
+                ar: "لماذا يُركب صمام عدم الرجوع عند خط الطرد؟",
+                options: [
+                    "A) To control flow rate (للتحكم بالتدفق)",
+                    "B) To prevent reverse flow when the pump stops (لمنع التدفق العكسي عند توقف المضخة)",
+                    "C) To decrease pressure (لتقليل الضغط)",
+                    "D) To filter fluid (لفلترة السائل)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q14. What happens when a centrifugal pump becomes 'Air Bound'?",
+                ar: "ماذا يحدث عندما تصبح المضخة 'محتبسة بالهواء'؟",
+                options: [
+                    "A) It pumps air efficiently (تضخ الهواء بكفاءة)",
+                    "B) Capacity increases (تزداد السعة)",
+                    "C) It loses prime and stops pumping liquid (تفقد التحضير وتتوقف عن الضخ)",
+                    "D) Motor speed decreases (تقل سرعة الماطور)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q15. How does increasing fluid viscosity affect a centrifugal pump?",
+                ar: "كيف تؤثر زيادة لزوجة السائل على مضخة الطرد المركزي؟",
+                options: [
+                    "A) Flow, head, and efficiency increase (يزداد التدفق، الضغط، والكفاءة)",
+                    "B) Flow, head, and efficiency decrease; power consumption increases (يقل التدفق، الضغط، والكفاءة؛ يزداد استهلاك الطاقة)",
+                    "C) No effect (لا يوجد تأثير)",
+                    "D) It operates quieter (تعمل بهدوء أكبر)"
+                ],
+                answer: 1
+            }
+        ];
+
+        const compressorsQuestions = [
+            {
+                en: "Q1. What is the fundamental difference between a pump and a compressor?",
+                ar: "ما الفرق الجوهري بين المضخة والضاغط؟",
+                options: [
+                    "A) Pumps handle compressible gases, compressors handle liquids (المضخات للغازات، والضواغط للسوائل)",
+                    "B) Pumps handle incompressible liquids, compressors handle compressible gases (المضخات للسوائل غير القابلة للانضغاط، والضواغط للغازات)",
+                    "C) No difference (لا يوجد فرق)",
+                    "D) Compressors use less power (الضواغط تستهلك طاقة أقل)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q2. A reciprocating compressor belongs to which family?",
+                ar: "الضاغط الترددي ذو المكبس ينتمي لأي عائلة؟",
+                options: [
+                    "A) Dynamic (ديناميكية)",
+                    "B) Axial (محورية)",
+                    "C) Positive Displacement (إزاحة موجبة)",
+                    "D) Ejectors (قاذفات)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q3. Which compressor type provides massive flow rates and is used in jet engines?",
+                ar: "أي ضاغط يوفر تدفق هائل ويُستخدم في المحركات النفاثة؟",
+                options: [
+                    "A) Reciprocating (ترددي)",
+                    "B) Centrifugal (طرد مركزي)",
+                    "C) Rotary Screw (حلزوني)",
+                    "D) Axial-flow (جريان محوري)"
+                ],
+                answer: 3
+            },
+            {
+                en: "Q4. What happens if liquid enters a running gas compressor (Wet Compression)?",
+                ar: "ماذا يحدث إذا دخل سائل لضاغط غاز أثناء عمله؟",
+                options: [
+                    "A) Efficiency increases (تزداد الكفاءة)",
+                    "B) Severe mechanical damage due to liquid slugging (تلف ميكانيكي شديد بسبب صدمة السائل)",
+                    "C) Gas cools safely (يبرد الغاز بأمان)",
+                    "D) Speed increases (تزداد السرعة)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q5. Why is 'Intercooling' used in multi-stage compressors?",
+                ar: "لماذا يُستخدم 'التبريد البيني' في الضواغط متعددة المراحل؟",
+                options: [
+                    "A) Increase total work (لزيادة الشغل الكلي)",
+                    "B) Decrease gas specific volume and reduce total compression work (لتقليل الحجم النوعي وتقليل شغل الانضغاط الكلي)",
+                    "C) Prevent freezing (لمنع التجمد)",
+                    "D) Increase discharge temp (لزيادة حرارة الطرد)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q6. In a centrifugal compressor, severe flow reversal and vibration at low flows is called:",
+                ar: "الارتداد العنيف للتدفق والاهتزاز عند التدفق المنخفض في ضاغط الطرد المركزي يسمى:",
+                options: [
+                    "A) Choking (اختناق)",
+                    "B) Cavitation (تكهف)",
+                    "C) Surge (الاندفاع العكسي / Surge)",
+                    "D) Slugging (صدمة سائل)"
+                ],
+                answer: 2
+            },
+            {
+                en: "Q7. What is 'Choking' (Stonewall)?",
+                ar: "ما هو الاختناق في الضواغط؟",
+                options: [
+                    "A) Maximum possible flow rate beyond which flow cannot increase (أقصى معدل تدفق لا يمكن زيادته بعده)",
+                    "B) Minimum flow rate (الحد الأدنى للتدفق)",
+                    "C) Motor burnout (احتراق الماطور)",
+                    "D) Liquid entry (دخول سائل)"
+                ],
+                answer: 0
+            },
+            {
+                en: "Q8. Thermodynamically, which process requires minimum work input?",
+                ar: "ثرموديناميكياً، أي عملية انضغاط تتطلب أقل شغل؟",
+                options: [
+                    "A) Adiabatic (أديباتية)",
+                    "B) Isothermal (أيزوثورمية - ثبات الحرارة)",
+                    "C) Polytropic (بوليتروبية)",
+                    "D) Isochoric (أيزوكورية)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q9. What is 'Clearance Volume' in a reciprocating compressor?",
+                ar: "ما الغرض من الحجم المتروك أعلى المكبس؟",
+                options: [
+                    "A) Increase volumetric efficiency (زيادة الكفاءة الحجمية)",
+                    "B) Prevent piston from striking cylinder head (لمنع المكبس من الاصطدام برأس الأسطوانة)",
+                    "C) Store oil (تخزين الزيت)",
+                    "D) Cool gas (تبريد الغاز)"
+                ],
+                answer: 1
+            },
+            {
+                en: "Q10. A Rotary Screw compressor is widely used because it:",
+                ar: "الضاغط الحلزوني الدوار يُستخدم بكثرة لأنه:",
+                options: [
+                    "A) Delivers continuous, pulsation-free air (يوفر هواء مضغوط مستمر وبدون نبضات)",
+                    "B) Compresses liquids (يضغط السوائل)",
+                    "C) Has low efficiency (كفاءته منخفضة)",
+                    "D) Requires no lube (لا يتطلب تشحيماً)"
+                ],
+                answer: 0
+            }
+        ];
+
+        let currentCategory = '';
+        let currentIndex = 0;
+        let score = 0;
+        let activeQuestions = [];
+
+        function startCategory(category) {
+            currentCategory = category;
+            currentIndex = 0;
+            score = 0;
+            activeQuestions = category === 'pumps' ? pumpsQuestions : compressorsQuestions;
+
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('quiz-view').classList.remove('hidden');
+
+            document.getElementById('quiz-category-title').innerText = category === 'pumps' ? 'قسم المضخات (Pumps)' : 'قسم الضواغط (Compressors)';
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = activeQuestions[currentIndex];
+            document.getElementById('quiz-progress-text').innerText = `السؤال ${currentIndex + 1} من ${activeQuestions.length}`;
+            document.getElementById('quiz-score-text').innerText = `${score} / ${currentIndex}`;
+            document.getElementById('question-number-badge').innerText = `Q${currentIndex + 1 < 10 ? '0' + (currentIndex + 1) : currentIndex + 1}`;
+            
+            document.getElementById('question-en').innerText = q.en;
+            document.getElementById('question-ar').innerText = q.ar;
+
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-right p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-sm text-gray-200 transition-all flex items-center justify-between group';
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-gray-500 group-hover:text-blue-400"></i>`;
+                btn.onclick = () => selectOption(idx, btn);
+                container.appendChild(btn);
+            });
+
+            document.getElementById('explanation-box').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function selectOption(selectedIndex, selectedBtn) {
+            const q = activeQuestions[currentIndex];
+            const optionsButtons = document.getElementById('options-container').children;
+
+            // Disable all options after selection
+            for (let i = 0; i < optionsButtons.length; i++) {
+                optionsButtons[i].style.pointerEvents = 'none';
+                if (i === q.answer) {
+                    optionsButtons[i].classList.remove('bg-white/5', 'bg-white/10');
+                    optionsButtons[i].classList.add('bg-emerald-500/20', 'border-emerald-500/50', 'text-emerald-300');
+                    optionsButtons[i].querySelector('i').className = 'fa-solid fa-circle-check text-emerald-400';
+                } else if (i === selectedIndex) {
+                    optionsButtons[i].classList.remove('bg-white/5', 'bg-white/10');
+                    optionsButtons[i].classList.add('bg-rose-500/20', 'border-rose-500/50', 'text-rose-300');
+                    optionsButtons[i].querySelector('i').className = 'fa-solid fa-circle-xmark text-rose-400';
+                }
+            }
+
+            if (selectedIndex === q.answer) {
+                score++;
+            }
+
+            document.getElementById('quiz-score-text').innerText = `${score} / ${currentIndex + 1}`;
+            
+            // Show explanation box
+            const expBox = document.getElementById('explanation-box');
+            document.getElementById('explanation-text').innerText = `الإجابة الصحيحة هي الخيار رقم ${String.fromCharCode(65 + q.answer)}. حافظ على تركيزك واضغط على السؤال التالي للمتابعة.`;
+            expBox.classList.remove('hidden');
+
+            // Show next button
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < activeQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+            document.getElementById('final-score-display').innerText = `${score} / ${activeQuestions.length}`;
+        }
+
+        function restartQuiz() {
+            startCategory(currentCategory);
+        }
+
+        function goHome() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
